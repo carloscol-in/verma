@@ -38,8 +38,8 @@ jobs:
         run: |
           git tag -d $(git tag -l)
           git fetch --tags
-          echo "Current version $(git tag | tail -n 1)"
-          export NEW_VERSION="v$(bump2version --current-version $(git tag | tail -n 1) --dry-run --list patch | sed -r s,"^.*=",,)"
+          echo "Current version $(git tag | tail -n 1 | awk -v def="0.0.0" '{print} END { if(NR==0) {print def} }')"
+          export NEW_VERSION="v$(bump2version --current-version $(git tag | tail -n 1 | awk -v def="0.0.0" '{print} END { if(NR==0) {print def} }') --dry-run --list patch | sed -r s,"^.*=",,)"
           echo "New version will be $NEW_VERSION"
           git config user.name "GitHub Actions"
           git config user.email "github-actions@users.noreply.github.com"
