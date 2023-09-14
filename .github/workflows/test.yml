@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Build Package
+name: Test Application
 
 on:
   pull_request:
@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   test:
-    name: Test Application
+    name: Run Unit Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -47,6 +47,7 @@ jobs:
       - name: Install dev dependencies
         run: |
           pip install pipenv
+          pipenv --python 3.11
           pipenv install --dev
 
       - name: Test
