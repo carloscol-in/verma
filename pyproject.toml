@@ -8,6 +8,9 @@ description = "Version Manager. CLI tool to help you manage your package version
 readme = "README.md"
 dynamic = ["version"]
 
+[project.scripts]
+verma = "verma.cli:app"
+
 [tool.setuptools]
 packages = ["verma"]
 
