@@ -6,11 +6,9 @@ name = "pypi"
 [packages]
 gitpython = "==3.1.35"
 click = "==8.1.7"
-verma = {editable = true, path = "."}
 
 [dev-packages]
 pytest = "*"
-verma = {path = "."}
 
 [requires]
 python_version = "3.11"
