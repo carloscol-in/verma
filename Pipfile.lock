@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e2fb0cae29e3b44f555b03ad1950a4ce976ee577f9530b47d0e26d26a40dc3c7"
+            "sha256": "8397a23fd5b25b6c0b51452c56a203f77e7773ec75d16e5c4a8102403cfa01c3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -48,6 +48,10 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==5.0.0"
+        },
+        "verma": {
+            "editable": true,
+            "path": "."
         }
     },
     "develop": {
@@ -84,8 +88,8 @@
             "version": "==7.4.2"
         },
         "verma": {
-            "path": ".",
-            "version": "==0.0.1"
+            "editable": true,
+            "path": "."
         }
     }
 }
