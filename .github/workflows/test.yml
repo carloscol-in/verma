@@ -49,6 +49,7 @@ jobs:
           pip install pipenv
           pipenv --python 3.11
           pipenv install --dev
+          pipenv install -e .
 
       - name: Test
         run: pipenv run pytest
