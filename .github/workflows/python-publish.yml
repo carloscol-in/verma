@@ -32,20 +32,21 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install build bump2version
+          pip install build
+          pip install -e .
 
       - name: Create Git tag
         run: |
           git tag -d $(git tag -l)
           git fetch --tags
           echo "Current version $(git tag | tail -n 1 | awk -v def="0.0.0" '{print} END { if(NR==0) {print def} }')"
-          export NEW_VERSION="v$(bump2version --current-version $(git tag | tail -n 1 | awk -v def="0.0.0" '{print} END { if(NR==0) {print def} }') --dry-run --list patch | sed -r s,"^.*=",,)"
+          export NEW_VERSION=$(verma bump -p "fix:" -m "feat:" -M "BREAKING CHANGES:")
           echo "New version will be $NEW_VERSION"
           git config user.name "GitHub Actions"
           git config user.email "github-actions@users.noreply.github.com"
           git tag $NEW_VERSION
 
-      - name: Push changes
+      - name: Push tags
         uses: ad-m/github-push-action@master
         with:
           tags: true
@@ -61,9 +62,6 @@ jobs:
           path: |
             dist/
             build/
-
-      - name: List current dir
-        run: ls
 
   pypi-publish:
     name: Upload release to PyPI
