@@ -37,13 +37,6 @@ jobs:
       - name: Build package
         run: python -m build
 
-      - name: Upload dist directory
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-distribution
-          path: |
-            dist/
-
       - name: Install dev dependencies
         run: |
           pip install pipenv

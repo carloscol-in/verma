@@ -33,10 +33,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install build
-          pip install -e .
 
       - name: Create Git tag
         run: |
+          pip install -e .
           git tag -d $(git tag -l)
           git fetch --tags
           echo "Current version $(git tag | tail -n 1 | awk -v def="0.0.0" '{print} END { if(NR==0) {print def} }')"
