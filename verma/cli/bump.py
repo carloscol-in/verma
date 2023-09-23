@@ -7,9 +7,9 @@ from verma.git.utils import select_bump_level_by_commit_message
 
 
 @click.command()
-@click.option('--patch-pattern', '-p', 'patch_patterns', multiple=True)
-@click.option('--minor-pattern', '-m', 'minor_patterns', multiple=True)
-@click.option('--major-pattern', '-M', 'major_patterns', multiple=True)
+@click.option('--patch-pattern', '-p', 'patch_patterns', multiple=True, help="RegEx pattern to be searched in versioning input to select Patch version for bumping.")
+@click.option('--minor-pattern', '-m', 'minor_patterns', multiple=True, help="RegEx pattern to be searched in versioning input to select Minor version for bumping.")
+@click.option('--major-pattern', '-M', 'major_patterns', multiple=True, help="RegEx pattern to be searched in versioning input to select Major version for bumping.")
 def bump(
         patch_patterns: t.List[str],
         minor_patterns: t.List[str],
