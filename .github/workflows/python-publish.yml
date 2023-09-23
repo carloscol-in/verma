@@ -40,7 +40,7 @@ jobs:
           git tag -d $(git tag -l)
           git fetch --tags
           echo "Current version $(git tag | tail -n 1 | awk -v def="0.0.0" '{print} END { if(NR==0) {print def} }')"
-          export NEW_VERSION=$(verma bump -p "fix:" -m "feat:" -M "BREAKING CHANGES:")
+          export NEW_VERSION=$(verma bump -p "fix:" -p "docs:" -m "feat:" -M "BREAKING CHANGES:")
           echo "New version will be $NEW_VERSION"
           git config user.name "GitHub Actions"
           git config user.email "github-actions@users.noreply.github.com"
